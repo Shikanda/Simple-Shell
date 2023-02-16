@@ -24,7 +24,11 @@ int main(int argc, char **argv)
 		}
 		else if(my_pid == 0)
 		{
-			execve(arr[0], arr, NULL);
+			if (execve(arr[0], arr, NULL))
+			{
+				perror("./shell");
+				return (1);
+			}
 		}
 		else
 		{
