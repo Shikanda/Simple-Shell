@@ -1,33 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "main.h"
 
-int **split_string(char *string)
+/**
+*splitter - reallocs old pinter to a newer one
+*@tok_str: string to br tokenized
+*@delim: char * of delimiters
+*
+*Return: vector to be used in execve
+ */
+char **splitter(char *tok_str, char *delim)
 {
-	char *line;
-	int i;
-	char *word[];
-	int j;
-	char **result;
+	size_t count;
+	char *token;
+	char *tmp;
+	char **tokens;
 
-	i = 0;
-
-	word = strtok(string, " ");
-	while (word != NULL)
+	count = 0;
+	tmp = _strdup(tok_str);
+	if (!tmp)
+		return (NULL);
+	token = strtok(tmp, delim);
+	while (token)
 	{
-		word[i] = word;
-		i++;
-		word = strtok(NULL, " ");
+		count++;
+		token = strtok(NULL, delim);
 	}
+	free(tmp);
+	tokens = malloc(sizeof(char *) * (count + 1));
 
-	result = malloc(i * sizeof(char*));
+	if (!tokens)
+		return (NULL);
 
-	for (j = 0; j < 1; j++)
+	token = strtok(tok_str, delim);
+
+	for (count = 0; token; count++)
 	{
-		result[j] = word[j];
+		tokens[count] = token;
+		token = strtok(NULL, delim);
 	}
-	free(result);
-
-	return (result);
+	tokens[count] = NULL;
+	return (tokens);
 }
