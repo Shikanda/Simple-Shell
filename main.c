@@ -16,7 +16,8 @@ int main(int argc, char **argv)
 
 		char **arr = malloc(sizeof(char *) * 32);
 		arr[0] = s_token;
-
+		
+		/*This is handles exit from the shell*/
 		if (strcmp(arr[0], "exit") == 0)
 			exit (0);
 
