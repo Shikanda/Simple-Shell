@@ -17,6 +17,9 @@ int main(int argc, char **argv)
 		char **arr = malloc(sizeof(char *) * 32);
 		arr[0] = s_token;
 
+		if (strcmp(arr[0], "exit") == 0)
+			exit (0);
+
 	/* This loop handles command line arg*/
 		i = 1;
 		while(s_token != NULL)
