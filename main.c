@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 
 
 		my_pid = fork();
-		
+
 		if (my_pid == -1)
 		{
 			perror("Error");
