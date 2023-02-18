@@ -5,7 +5,7 @@
  * Return: success (0)
  */
 
-int main(int argc, char **argv)
+int main()
 {
 	char *command = NULL;
 	size_t n = 0;
