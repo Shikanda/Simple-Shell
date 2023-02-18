@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 		}
 
 
+		/*the fork function creates child process*/
 		my_pid = fork();
 
 		if (my_pid == -1)
