@@ -10,6 +10,7 @@ int main(int argc, char **argv)
 
 	while(1)
 	{
+		/*prints the command prompt, will require to use the write funtion*/
 		printf("(shell)$ ");
 		getline(&command, &n, stdin);
 		s_token = strtok(command, " \n");
