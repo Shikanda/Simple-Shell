@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * main - main function covering simple shell
+ * functionalities.
+ * Return: success (0)
+ */
 
 int main(int argc, char **argv)
 {
