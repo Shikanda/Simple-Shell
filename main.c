@@ -7,6 +7,7 @@
 
 int main()
 {
+	char *prompt = "sh $ ";
 	char *command = NULL;
 	size_t n = 0;
 	char *s_token;
@@ -16,7 +17,7 @@ int main()
 	while(1)
 	{
 		/*prints the command prompt, will require to use the write funtion*/
-		printf("(shell)$ ");
+		write(1, prompt, 5);
 		getline(&command, &n, stdin);
 		s_token = strtok(command, " \n");
 
