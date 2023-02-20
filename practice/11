@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "main.h"
+
+int main(void)/*reads the line and prints $ sign*/
+{
+	char *line =  NULL;
+	size_t length;
+	int reada;
+
+	length = 0;
+
+
+		printf("$ ");
+		reada = getline(&line, &length, stdin);
+
+		printf("%s", line);
+		if (reada == -1)
+			break;/* E-O-F or error*/
+	
+		free(line);
+
+	return (0);
+}
