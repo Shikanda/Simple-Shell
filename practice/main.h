@@ -9,7 +9,7 @@
 #include <sys/types.h>
 
 /* builtin functions*/
-int _strlen(char *s);
+int _len(char *s);
 char *_strcpy(char *dest, char *src);
 char *_strdup(char *str);
 
