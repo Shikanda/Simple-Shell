@@ -7,7 +7,7 @@
  *
  */
 
-int main(argc, **argv, __attribute__)
+int main()
 {
 	char *prompt = "shell$ ";
 	char *command, **cmd;
