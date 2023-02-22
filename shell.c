@@ -1,6 +1,5 @@
 #include "shell.h"
 
-extern char **environ;
 int _len(char *s);
 #define MAX_COMMAND_LENGTH 256
 #define MAX_ARGS 16
@@ -56,7 +55,7 @@ int main(void)
 		}
 		else if (pid == 0)
 		{
-			execve(args[0], args, environ);
+			execve(args[0], args, NULL);
 			perror("shell");
 			exit(EXIT_FAILURE);
 		}
