@@ -1,16 +1,16 @@
 #include "shell.h"
 /**
  * main - executes the whole program.
- * @argc: arg count.
- * @argv: arg vector.
  * Return: sucess (0).
  *
  */
 
-int main()
+int main(void)
 {
 	char *prompt = "shell$ ";
-	char *command, **cmd;
+	char *command;
+	char **cmd;
+
 
 	while (1)
 	{
