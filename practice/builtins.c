@@ -1,6 +1,6 @@
 #include "main.h"
 
-int _strlen(char *s);
+int _len(char *s);
 char *_strdup(char *str);
 void *_realloc(void *ptr, unsigned int old, unsigned int newer);
 char *_strcpy(char *dest, char *src);
@@ -24,12 +24,12 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
-*_strlen - gets length of string
+*_len - gets length of string
 *@s: string
 *
 *Return: length
 */
-int _strlen(char *s)
+int _len(char *s)
 {
 	int length;
 

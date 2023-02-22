@@ -13,6 +13,7 @@ int main()
 	char *s_token;
 	pid_t my_pid;
 	int status, i;
+	char **arr;
 
 	while(1)
 	{
@@ -21,10 +22,9 @@ int main()
 		getline(&command, &n, stdin);
 		s_token = strtok(command, " \n");
 
-		char **arr = malloc(sizeof(char *) * 32);
 		arr[0] = s_token;
-		
-		/*This is handles exit from the shell*/
+
+		arr = malloc(sizeof(char *) * 32);
 		if (strcmp(arr[0], "exit") == 0)
 			exit (0);
 
