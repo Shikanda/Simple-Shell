@@ -1,28 +1,87 @@
 #include "shell.h"
-/**
- * main - executes the whole program.
- * Return: sucess (0).
- *
- */
 
+int _len(char *s);
+#define MAX_COMMAND_LENGTH 256
+#define MAX_ARGS 16
+
+/**
+*main - entry point for shell
+*
+*Return: Always 0
+*/
 int main(void)
 {
-	char *prompt = "shell$ ";
-	char *command;
-	char **cmd;
-
+	char prompt[] = "shell$ ";
+	char command[MAX_COMMAND_LENGTH];
+	char *args[MAX_ARGS + 1];
+	ssize_t n;
+	char *token;
+	pid_t pid;
+	int i;
+	int status;
 
 	while (1)
 	{
-		write(1, prompt, 7);
+		write(STDIN_FILENO, prompt, _len(prompt));
 
-		command = input_command();
-		cmd = command_args(command);
-		exec_command(cmd);
+		n = read(STDIN_FILENO, command, MAX_COMMAND_LENGTH);
+		if (n == -1)
+		{
+			perror("read");
+		}
+		else if (n == 0)
+		{
+			write(1, "\n", 1);
+		}
+		if (command[n - 1] == '\n')
+		{
+			command[n - 1] = '\0';
+		}
+		i = 0;
+		token = strtok(command, " ");
+		while (token != NULL && i < MAX_ARGS)
+		{
+			args[i] = token;
+			token = strtok(NULL, " ");
+			i++;
+		}
+		args[i] =  NULL;
 
-		free(command);
-		free(cmd);
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork");
+		}
+		else if (pid == 0)
+		{
+			execvp(args[0], args);
+			perror("shell");
+		}
+		else
+		{
+			if (wait(&status) == -1)
+			{
+				perror("wait");
+			}
+		}
 	}
-
 	return (0);
+}
+/**
+*_len - gets length of string
+*@s: string
+*
+*Return: length
+*/
+
+int _len(char *s)
+{
+	int length;
+
+	length = 0;
+	while (*s++)
+	{
+		length++;
+	}
+	return (length);
 }

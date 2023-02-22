@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
 *splitter - reallocs old pinter to a newer one
