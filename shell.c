@@ -1,5 +1,6 @@
 #include "shell.h"
 
+extern char **environ;
 int _len(char *s);
 #define MAX_COMMAND_LENGTH 256
 #define MAX_ARGS 16
@@ -51,17 +52,20 @@ int main(void)
 		if (pid == -1)
 		{
 			perror("fork");
+			exit(EXIT_FAILURE);
 		}
 		else if (pid == 0)
 		{
-			execvp(args[0], args);
+			execve(args[0], args, environ);
 			perror("shell");
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
 			if (wait(&status) == -1)
 			{
 				perror("wait");
+				exit(EXIT_FAILURE);
 			}
 		}
 	}

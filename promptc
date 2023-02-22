@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void)/*reads the line and prints $ sign*/
+int main()
 {
 	char *line;
 	size_t length;
